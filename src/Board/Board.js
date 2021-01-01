@@ -10,14 +10,29 @@ import './Board.css';
  */
 
 class Board extends Component {
+
+	chooseBox(e) {
+		if (e.target.className === "boards") {
+			Array.from(e.target.children).forEach((board) => {
+				board.style.border = "3px solid #6495ee";
+			});
+			return;
+		}
+		const boards = Array.from(e.target.parentNode.children);
+		boards.forEach((board) => {
+			board.style.border = "3px solid #6495ee";
+		});
+		e.target.style.border = "3px solid red";
+	}
+
 	render() {
 		return (
 			<div className="Board">
 				<h1>Choose board:</h1>
-				<div className="boards">
-					<div className="Board-option">1</div>
-					<div className="Board-option">2</div>
-					<div className="Board-option">3</div>
+				<div className="boards" onClick={this.chooseBox}>
+					<div className="Board-option" onClick={this.chooseBox}>1</div>
+					<div className="Board-option" onClick={this.chooseBox}>2</div>
+					<div className="Board-option" onClick={this.chooseBox}>3</div>
 				</div>
 			</div>
 		);

@@ -28,12 +28,34 @@ class Counter extends Component {
 		});
 	}
 
+	inc10() {
+		this.setState({
+			num: this.state.num + 10
+		});
+	}
+
+	checkLimits() {
+		if (this.state.num > 20) {
+			this.setState({
+				num: 20
+			});
+		}
+		if (this.state.num < 0) {
+			this.setState({
+				num: 0
+			});
+		}
+	}
+
 	render() {
+		this.checkLimits();
 		return (
 			<div>
 				<h1>Counter: </h1>
 				<button onClick={this.increase.bind(this)}>Increase</button>
 				<button onClick={this.decrease.bind(this)}>Decrease</button>
+				<button onClick={this.inc10.bind(this)}>Increase by 10</button>
+				<br />
 				<span>{this.state.num}</span>
 			</div>
 		);

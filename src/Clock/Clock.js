@@ -6,12 +6,30 @@ import React, { Component } from 'react';
  * Open the image to see the animation.
  */
 
+ 
 class Clock extends Component {
+	constructor() {
+		super();
+		this.state = {
+			time: new Date().toLocaleTimeString()
+		};
+	}
+
+	clockUpdate() {
+		setInterval(() => {
+			this.setState({
+				time : new Date().toLocaleTimeString()
+			});
+		}, 1000);
+		
+	}
+
 	render() {
+		this.clockUpdate();
 		return (
 			<div>
 				<h1>Clock</h1>
-				The time is:
+				The time is: {this.state.time}				
 			</div>
 		);
 	}
